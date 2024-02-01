@@ -214,11 +214,14 @@ public class LlamaModel implements AutoCloseable {
 		public final String text;
 		@NotNull
 		public final Map<Integer, Float> probabilities;
+		@NotNull
+		public final byte[] utf8Bytes;
 
-		private Output(int token, byte[] generated, @NotNull Map<Integer, Float> probabilities) {
+		private Output(int token, @NotNull  byte[] generated, @NotNull Map<Integer, Float> probabilities) {
 			this.token = token;
 			this.text = new String(generated, StandardCharsets.UTF_8);
 			this.probabilities = probabilities;
+			this.utf8Bytes = generated;
 		}
 
 		@Override
