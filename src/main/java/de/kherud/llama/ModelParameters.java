@@ -49,7 +49,7 @@ public final class ModelParameters {
 	// compute maximum memory usage
 	private boolean memTest = false;
 	// attempt optimizations that help on some NUMA systems
-	private boolean numa = false;
+	private int numa = 0;
 	private boolean verbosePrompt = false; // log prompt tokens before generation
 
 	public ModelParameters setNThreads(int nThreads) {
@@ -77,9 +77,8 @@ public final class ModelParameters {
 		return this;
 	}
 
-	public ModelParameters setNuma(boolean numa) {
-		this.numa = numa;
-		return this;
+	public int getNuma() {
+		return numa;
 	}
 
 	public ModelParameters setVerbosePrompt(boolean verbosePrompt) {
@@ -286,8 +285,9 @@ public final class ModelParameters {
 		return memTest;
 	}
 
-	public boolean isNuma() {
-		return numa;
+	public ModelParameters setNuma(int numa) {
+		this.numa = numa;
+		return this;
 	}
 
 	public boolean isVerbosePrompt() {
